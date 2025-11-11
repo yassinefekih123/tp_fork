@@ -1,153 +1,526 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Restaurant Le Délice</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restaurant Le Délice - Cuisine Authentique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f8f6f2;
-        }
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: #0a0a0a;
+      color: #333;
+      overflow-x: hidden;
+    }
 
-        header {
-            background: #c0392b;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+    /* ======== NAVIGATION ======== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-        .section-title {
-            text-align: center;
-            margin: 40px 0 20px;
-            font-size: 28px;
-            color: #c0392b;
-        }
+    nav .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
 
-        .menu {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 0 20px;
-        }
+    nav .logo span {
+      color: #ff6b35;
+    }
 
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            width: 250px;
-            box-shadow: 0 0 10px #ddd;
-            text-align: center;
-            transition: transform 0.2s ease;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 35px;
+    }
 
-        .card:hover {
-            transform: scale(1.03);
-        }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+    }
 
-        .card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
+    nav a:hover {
+      color: #ff6b35;
+    }
 
-        .price {
-            font-weight: bold;
-            color: #2c3e50;
-        }
+    /* ======== HERO SECTION ======== */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, rgba(185, 43, 39, 0.85), rgba(21, 101, 192, 0.85)),
+                  url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .order-btn {
-            background-color: #c0392b;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 10px 15px;
-            margin-top: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+      animation: pulse 15s ease-in-out infinite;
+    }
 
-        .order-btn:hover {
-            background-color: #a93226;
-        }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.2); opacity: 0.5; }
+    }
 
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-        }
-    </style>
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 20px;
+      animation: fadeInUp 1s ease;
+    }
 
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 72px;
+      margin-bottom: 20px;
+      text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.5);
+      letter-spacing: 3px;
+    }
+
+    .hero p {
+      font-size: 22px;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 16px 45px;
+      background: #ff6b35;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 1px;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-btn::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .cta-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+    }
+
+    /* ======== MENU SECTION ======== */
+    .menu-section {
+      background: #faf7f2;
+      padding: 100px 50px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .section-title h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 48px;
+      color: #222;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(to right, #ff6b35, #b92b27);
+      border-radius: 2px;
+    }
+
+    .section-title p {
+      color: #666;
+      font-size: 16px;
+      font-weight: 300;
+      margin-top: 20px;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.15);
+    }
+
+    .card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover .card-overlay {
+      opacity: 1;
+    }
+
+    .card-content {
+      padding: 25px;
+    }
+
+    .card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 15px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .price {
+      font-weight: 700;
+      color: #ff6b35;
+      font-size: 24px;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .order-btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      background: linear-gradient(135deg, #ff6b35, #b92b27);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .order-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(185, 43, 39, 0.3);
+    }
+
+    /* ======== FEATURES ======== */
+    .features {
+      background: #222;
+      padding: 80px 50px;
+      color: white;
+      text-align: center;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      max-width: 1000px;
+      margin: 50px auto 0;
+    }
+
+    .feature-item {
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    .feature-item:nth-child(1) { animation-delay: 0.1s; }
+    .feature-item:nth-child(2) { animation-delay: 0.2s; }
+    .feature-item:nth-child(3) { animation-delay: 0.3s; }
+
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .feature-item h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #ff6b35;
+    }
+
+    .feature-item p {
+      font-size: 14px;
+      color: #ccc;
+      font-weight: 300;
+    }
+
+    /* ======== FOOTER ======== */
+    footer {
+      background: #0a0a0a;
+      color: #999;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    footer a {
+      color: #ff6b35;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ======== RESPONSIVE ======== */
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px 20px;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .menu-section {
+        padding: 60px 20px;
+      }
+
+      .section-title h2 {
+        font-size: 36px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Le <span>Délice</span></div>
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#features">À Propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <header>
-        <h1>Restaurant Le Délice</h1>
-        <p>Le meilleur goût en ville !</p>
-    </header>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Le Délice</h1>
+      <p>Une expérience culinaire inoubliable au cœur de Tozeur</p>
+      <a href="#menu" class="cta-btn">Découvrir Notre Menu</a>
+    </div>
+  </section>
 
-    <h2 class="section-title">Notre Menu</h2>
+  <!-- Menu Section -->
+  <section class="menu-section" id="menu">
+    <div class="section-title">
+      <h2>Notre Menu</h2>
+      <p>Savourez nos spécialités préparées avec passion</p>
+    </div>
 
-    <section class="menu">
-
-        <div class="card">
-            <img src="carbonara.jpg" alt="Pâtes Carbonara">
-            <h3>Pâtes Carbonara</h3>
-            <p>Sauce crémeuse & fromage</p>
-            <p class="price">18 DT</p>
-            <button class="order-btn" onclick="commander('Pâtes Carbonara')">Commander</button>
+    <div class="menu">
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="carbonara.jpg" alt="Pâtes Carbonara">
+          <div class="card-overlay"></div>
         </div>
-
-        <div class="card">
-            <img src="pizza.jpg" alt="Pizza Margherita">
-            <h3>Pizza Margherita</h3>
-            <p>Tomates fraîches, basilic, mozzarella</p>
-            <p class="price">20 DT</p>
-            <button class="order-btn" onclick="commander('Pizza Margherita')">Commander</button>
+        <div class="card-content">
+          <h3>Pâtes Carbonara</h3>
+          <p>Sauce crémeuse & fromage italien</p>
+          <span class="price">18 DT</span>
+          <a href="formulaire.html?plat=Pâtes Carbonara" class="order-btn">Commander</a>
         </div>
+      </div>
 
-        <div class="card">
-            <img src="tacos.jpg" alt="Tacos">
-            <h3>Tacos</h3>
-            <p>Viande ou poulet + sauce maison</p>
-            <p class="price">14 DT</p>
-            <button class="order-btn" onclick="commander('Tacos')">Commander</button>
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="pizza.jpg" alt="Pizza Margherita">
+          <div class="card-overlay"></div>
         </div>
-
-        <div class="card">
-            <img src="salade.jpg" alt="Salade César">
-            <h3>Salade César</h3>
-            <p>Poulet grillé, parmesan, croutons</p>
-            <p class="price">15 DT</p>
-            <button class="order-btn" onclick="commander('Salade César')">Commander</button>
+        <div class="card-content">
+          <h3>Pizza Margherita</h3>
+          <p>Tomates fraîches, basilic & mozzarella</p>
+          <span class="price">20 DT</span>
+          <a href="formulaire.html?plat=Pizza Margherita" class="order-btn">Commander</a>
         </div>
+      </div>
 
-    </section>
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="tacos.jpg" alt="Tacos">
+          <div class="card-overlay"></div>
+        </div>
+        <div class="card-content">
+          <h3>Tacos</h3>
+          <p>Viande ou poulet avec sauce maison</p>
+          <span class="price">14 DT</span>
+          <a href="formulaire.html?plat=Tacos" class="order-btn">Commander</a>
+        </div>
+      </div>
 
-    <h2 class="section-title">Contact</h2>
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="salade.jpg" alt="Salade César">
+          <div class="card-overlay"></div>
+        </div>
+        <div class="card-content">
+          <h3>Salade César</h3>
+          <p>Poulet grillé, parmesan, croutons dorés</p>
+          <span class="price">15 DT</span>
+          <a href="formulaire.html?plat=Salade César" class="order-btn">Commander</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>📍 Adresse : Tozeur, Tunisie</p>
-        <p>📞 Téléphone : 22 333 444</p>
-        <p>✉ Email : ledelice@food.tn</p>
-    </footer>
-<<<<<<< HEAD
-=======
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 42px; margin-bottom: 20px;">Pourquoi Nous Choisir</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <span class="feature-icon">🍽️</span>
+        <h3>Qualité Premium</h3>
+        <p>Ingrédients frais et de qualité supérieure sélectionnés avec soin</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">⚡</span>
+        <h3>Livraison Rapide</h3>
+        <p>Commandez en ligne et recevez vos plats chauds en moins de 30 minutes</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">👨‍🍳</span>
+        <h3>Chefs Experts</h3>
+        <p>Une équipe passionnée qui prépare chaque plat avec amour et expertise</p>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        function commander(plat) {
-            alert("Vous avez choisi de commander : " + plat + " 🍽️");
+  <!-- Footer -->
+  <footer id="contact">
+    <p>📍 Tozeur, Tunisie | 📞 <a href="tel:22333444">22 333 444</a> | ✉ <a href="mailto:ledelice@food.tn">ledelice@food.tn</a></p>
+    <p style="margin-top: 15px; font-size: 12px;">© 2025 Restaurant Le Délice — Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-    </script>
-
->>>>>>> 11efeab1320cfdaf61cbb04f49d69b4dc20c1778
+      });
+    });
+  </script>
 </body>
 </html>
